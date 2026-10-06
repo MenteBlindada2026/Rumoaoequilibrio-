@@ -1,0 +1,13 @@
+{
+  "name": "rumo-ao-equilibrio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site de apoio com pesquisa registrada uma única vez por código individual.",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node site/server.js",
+    "test": "node --test"
+  }
+}
