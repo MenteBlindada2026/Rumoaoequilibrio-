@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="description" content="Informações para encontrar apoio nos Centros de Atenção Psicossocial." />
+    <link rel="icon" type="image/svg+xml" href="brain-lightning.svg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Apoio profissional | Rumo ao Equilíbrio</title>
+  </head>
+  <body>
+    <section class="access-gate" id="accessGate" role="dialog" aria-modal="true" aria-labelledby="accessTitle">
+      <form class="access-card" id="accessForm">
+        <span class="access-logo" aria-hidden="true">🧠⚡</span>
+        <p class="eyebrow highlight">Um espaço para você</p><h1 id="accessTitle">Boas-vindas!</h1>
+        <p>Como podemos te chamar? Seu nome fica salvo somente neste dispositivo.</p>
+        <label for="profileName">Seu nome</label><input id="profileName" name="profileName" autocomplete="given-name" maxlength="40" minlength="2" autofocus required />
+        <p class="access-error" id="accessError" aria-live="polite"></p>
+        <button class="primary-btn" type="submit">Entrar no site</button>
+        <small>Esta tela não cria uma conta nem protege informações com senha.</small>
+      </form>
+    </section>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+    <header class="topbar panel">
+      <a class="brand-wrap" href="index.html" aria-label="Rumo ao Equilíbrio - início">
+        <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Cérebro com raio">
+          <path d="M29 11c-3-5-11-4-13 2-7-1-11 7-7 12-5 5-2 13 4 14-1 7 6 12 12 8l4-3V14z" fill="#bd75ff" stroke="#202f47" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M29 13c5-5 13-2 13 4 7 0 10 8 6 13 4 5 1 12-5 13 0 7-8 11-13 6l-1-1V14z" fill="#8b5bd0" stroke="#202f47" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M28 17v27M18 20l7 5m-13 5 10 1m22-11-8 6m14 7-10 1m-14 5-7 4m15-4 8 5" fill="none" stroke="#f4d8ff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="m49 4-11 18h8l-5 14 16-21h-9l5-11z" fill="#ffcf4a" stroke="#202f47" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span><span class="eyebrow">Apoio e prevenção</span><span class="brand-title">Rumo ao Equilíbrio</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="index.html">Início</a><a href="pesquisa.html">Pesquisa</a>
+        <a href="calendario.html">Calendário</a><a href="jogos.html">Jogos</a><a href="caps.html" aria-current="page">CAPS</a>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Alternar tema">
+        <span class="theme-icon" aria-hidden="true">☾</span><span id="themeLabel">Modo escuro</span>
+      </button>
+      <span id="profileGreeting" class="profile-greeting"></span><button id="signOut" class="sign-out" type="button">Sair</button>
+    </header>
+    <main class="container">
+      <section class="section panel">
+        <div class="section-header">
+          <p class="eyebrow">Apoio profissional</p>
+          <h1>Você pode pedir ajuda.</h1>
+        </div>
+        <div class="caps-layout">
+          <div class="caps-info">
+            <p>
+              Em caso de uso frequente ou sintomas intensos, vale buscar apoio de um CAPS
+              ou profissional da saúde. O atendimento pode ajudar a organizar cuidado,
+              estabilidade emocional e estratégias de recuperação.
+            </p>
+            <p>Converse com um adulto de confiança para encontrar o serviço mais próximo de você.</p>
+            <a href="https://www.gov.br/saude/pt-br/acesso-a-informacao/acoes-e-programas/caps" target="_blank" rel="noreferrer" class="primary-btn">Conhecer os CAPS</a>
+          </div>
+          <aside class="qr-box">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.gov.br/saude/pt-br/acesso-a-informacao/acoes-e-programas/caps"
+              alt="QR Code para acessar informações sobre os CAPS no site do Ministério da Saúde"
+            />
+            <p>Escaneie para acessar as informações oficiais.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="description" content="Desafios divertidos para exercitar memória, foco e raciocínio." />
+    <link rel="icon" type="image/svg+xml" href="brain-lightning.svg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Arcade da Mente | Rumo ao Equilíbrio</title>
+  </head>
+  <body class="games-page">
+    <section class="access-gate" id="accessGate" role="dialog" aria-modal="true" aria-labelledby="accessTitle">
+      <form class="access-card" id="accessForm">
+        <span class="access-logo" aria-hidden="true">🧠⚡</span>
+        <p class="eyebrow highlight">Um espaço para você</p><h1 id="accessTitle">Boas-vindas!</h1>
+        <p>Como podemos te chamar? Seu nome fica salvo somente neste dispositivo.</p>
+        <label for="profileName">Seu nome</label><input id="profileName" name="profileName" autocomplete="given-name" maxlength="40" minlength="2" autofocus required />
+        <p class="access-error" id="accessError" aria-live="polite"></p>
+        <button class="primary-btn" type="submit">Entrar no site</button>
+        <small>Esta tela não cria uma conta nem protege informações com senha.</small>
+      </form>
+    </section>
+    <header class="topbar panel">
+      <a class="brand-wrap" href="index.html" aria-label="Rumo ao Equilíbrio - início">
+        <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Cérebro com raio">
+          <path d="M29 11c-3-5-11-4-13 2-7-1-11 7-7 12-5 5-2 13 4 14-1 7 6 12 12 8l4-3V14z" fill="#bd75ff" stroke="#202f47" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M29 13c5-5 13-2 13 4 7 0 10 8 6 13 4 5 1 12-5 13 0 7-8 11-13 6l-1-1V14z" fill="#8b5bd0" stroke="#202f47" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M28 17v27M18 20l7 5m-13 5 10 1m22-11-8 6m14 7-10 1m-14 5-7 4m15-4 8 5" fill="none" stroke="#f4d8ff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="m49 4-11 18h8l-5 14 16-21h-9l5-11z" fill="#ffcf4a" stroke="#202f47" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span><span class="eyebrow">Apoio e prevenção</span><span class="brand-title">Rumo ao Equilíbrio</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="index.html">Início</a><a href="pesquisa.html">Pesquisa</a>
+        <a href="calendario.html">Calendário</a><a href="jogos.html" aria-current="page">Jogos</a><a href="caps.html">CAPS</a>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Alternar tema">
+        <span class="theme-icon" aria-hidden="true">☾</span><span id="themeLabel">Modo escuro</span>
+      </button>
+      <span id="profileGreeting" class="profile-greeting"></span><button id="signOut" class="sign-out" type="button">Sair</button>
+    </header>
+    <main class="container arcade-container">
+      <section class="arcade-hero">
+        <div>
+          <p class="arcade-kicker">🕹️ MODO ARCADE ATIVADO</p>
+          <h1>Desafio da mente</h1>
+          <p>Jogue, pratique e suba de nível. Cada acerto rende XP — sem pressão, só diversão!</p>
+        </div>
+        <div class="arcade-mascot" aria-hidden="true">🧠</div>
+      </section>
+
+      <section class="xp-panel" aria-label="Seu progresso no arcade">
+        <div class="xp-summary">
+          <span class="level-badge">NÍVEL <strong id="gameLevel">1</strong></span>
+          <span class="xp-total"><strong id="gameXp">0</strong> XP</span>
+        </div>
+        <div class="xp-track" role="progressbar" aria-label="Progresso para o próximo nível" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <span id="gameXpBar"></span>
+        </div>
+        <p id="gameXpHint" class="xp-hint" aria-live="polite">Mais 100 XP para o próximo nível. Seu progresso fica salvo neste dispositivo.</p>
+      </section>
+
+      <section class="games-layout arcade-games" aria-label="Lista de jogos">
+        <article class="game-card game-card-memory">
+          <div class="game-card-heading"><span class="game-emoji" aria-hidden="true">🃏</span><span class="game-tag">MEMÓRIA</span></div>
+          <h2>Par de ideias</h2>
+          <p class="game-description">Encontre todos os pares. Cada combinação vale <strong>+15 XP</strong>.</p>
+          <div id="memoryGame" class="memory-game" aria-label="Cartas do jogo da memória"></div>
+          <div class="game-toolbar">
+            <p class="game-score">Jogadas <strong id="movesCount">0</strong></p>
+            <button id="restartMemory" class="game-restart" type="button">↻ Reiniciar</button>
+          </div>
+          <p id="memoryFeedback" class="game-feedback" aria-live="polite">Vire duas cartas para começar!</p>
+        </article>
+
+        <article class="game-card game-card-quiz">
+          <div class="game-card-heading"><span class="game-emoji" aria-hidden="true">⚡</span><span class="game-tag">FOCO RÁPIDO</span></div>
+          <h2>Escolha consciente</h2>
+          <div class="brain-quiz">
+            <p id="brainQuestion">Complete: “Eu posso começar hoje com...”</p>
+            <button class="brain-option" type="button" data-answer="1">✨ Foco</button>
+            <button class="brain-option" type="button" data-answer="0">Desistir</button>
+            <button class="brain-option" type="button" data-answer="0">Pânico</button>
+          </div>
+          <p id="brainFeedback" class="game-feedback" aria-live="polite">Acerte para ganhar <strong>+10 XP</strong>.</p>
+        </article>
+
+        <article class="game-card game-card-number">
+          <div class="game-card-heading"><span class="game-emoji" aria-hidden="true">🔢</span><span class="game-tag">SEQUÊNCIA</span></div>
+          <h2>Ordem numérica</h2>
+          <p class="game-description">Memorize a sequência e toque nos números na ordem certa.</p>
+          <div id="numberGame" class="number-game"></div>
+          <p id="numberFeedback" class="game-feedback" aria-live="polite">Cada passo correto vale <strong>+5 XP</strong>.</p>
+        </article>
+
+        <article class="game-card game-card-word">
+          <div class="game-card-heading"><span class="game-emoji" aria-hidden="true">🔤</span><span class="game-tag">ANAGRAMA</span></div>
+          <h2>Palavra embaralhada</h2>
+          <p class="game-description">Desembaralhe as letras e descubra a palavra.</p>
+          <div id="wordGame" class="word-game"></div>
+          <p id="wordFeedback" class="game-feedback" aria-live="polite">Resolva para ganhar <strong>+20 XP</strong>.</p>
+        </article>
+
+        <article class="game-card game-card-reaction">
+          <div class="game-card-heading"><span class="game-emoji" aria-hidden="true">🎯</span><span class="game-tag">REFLEXO</span></div>
+          <h2>Caça ao brilho</h2>
+          <p class="game-description">Acerte o alvo que aparece antes que ele mude de lugar. Cada acerto vale <strong>+3 XP</strong>.</p>
+          <div id="clickGame" class="click-game">
+            <button id="clickTarget" class="click-target" type="button" aria-label="Alvo do jogo" disabled>★</button>
+          </div>
+          <div class="game-toolbar"><p class="game-score">Pontos <strong id="clickScore">0</strong></p><button id="clickStart" class="game-restart" type="button">▶ Começar</button></div>
+          <p id="clickFeedback" class="game-feedback" aria-live="polite">Você tem 15 segundos para pegar o máximo!</p>
+        </article>
+
+        <article class="game-card game-card-math">
+          <div class="game-card-heading"><span class="game-emoji" aria-hidden="true">🧮</span><span class="game-tag">RACIOCÍNIO</span></div>
+          <h2>Conta relâmpago</h2>
+          <p class="game-description">Resolva cinco continhas curtas. Cada acerto vale <strong>+5 XP</strong>.</p>
+          <div id="mathGame" class="math-game">
+            <p id="mathQuestion">Pressione começar para jogar!</p>
+            <div id="mathOptions" class="math-options"></div>
+          </div>
+          <div class="game-toolbar"><p class="game-score">Rodada <strong id="mathRound">0/5</strong></p><button id="mathStart" class="game-restart" type="button">▶ Começar</button></div>
+          <p id="mathFeedback" class="game-feedback" aria-live="polite">Sem cronômetro. Jogue no seu ritmo.</p>
+        </article>
+
+        <article class="game-card game-card-chess">
+          <div class="game-card-heading"><span class="game-emoji" aria-hidden="true">♟️</span><span class="game-tag">ESTRATÉGIA</span></div>
+          <h2>Xadrez contra a IA</h2>
+          <p class="game-description">Você joga com as peças claras. Escolha a dificuldade e toque numa peça para ver os movimentos legais.</p>
+          <div class="chess-controls">
+            <label for="chessDifficulty">Dificuldade da IA</label>
+            <select id="chessDifficulty">
+              <option value="easy">Fácil</option><option value="medium" selected>Médio</option><option value="hard">Difícil</option>
+            </select>
+            <button id="chessRestart" class="game-restart" type="button">↻ Nova partida</button>
+          </div>
+          <p id="chessStatus" class="chess-status" aria-live="polite">Sua vez! Você joga com as peças claras.</p>
+          <div id="chessBoard" class="chess-board" role="grid" aria-label="Tabuleiro de xadrez"></div>
+          <p id="chessFeedback" class="game-feedback" aria-live="polite">A IA está pensando apenas no seu navegador. Roque, promoção e captura en passant habilitados.</p>
+        </article>
+      </section>
+      <p class="arcade-footer">🌟 O importante é se divertir e tentar mais uma vez!</p>
+    </main>
+    <script src="app.js"></script>
+    <script src="chess.js"></script>
+  </body>
+</html>

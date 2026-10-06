@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="description" content="Autoavaliação acolhedora para refletir sobre seu bem-estar e buscar apoio." />
+    <link rel="icon" type="image/svg+xml" href="brain-lightning.svg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Autoavaliação | Rumo ao Equilíbrio</title>
+  </head>
+  <body class="research-page">
+    <section class="access-gate" id="accessGate" role="dialog" aria-modal="true" aria-labelledby="accessTitle">
+      <form class="access-card" id="accessForm">
+        <span class="access-logo" aria-hidden="true">🧠⚡</span>
+        <p class="eyebrow highlight">Autoavaliação</p><h1 id="accessTitle">Antes de começar...</h1>
+        <p>Digite seu nome. O sistema criará automaticamente um código individual para este navegador.</p>
+        <label for="profileName">Seu nome</label><input id="profileName" name="profileName" autocomplete="given-name" maxlength="40" minlength="2" autofocus required />
+        <label class="consent-choice"><input id="dataConsent" type="checkbox" required /> Entendo que minhas respostas serão salvas no banco de dados do projeto para impedir um segundo envio.</label>
+        <p class="access-error" id="accessError" aria-live="polite"></p>
+        <button class="primary-btn" type="submit">Gerar meu código e continuar</button>
+        <small>Seu nome não será enviado ao servidor nem guardado com as respostas. A identificação automática vale para este navegador.</small>
+      </form>
+    </section>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+    <header class="topbar panel">
+      <a class="brand-wrap" href="index.html" aria-label="Rumo ao Equilíbrio - início">
+        <svg class="brand-logo" viewBox="0 0 64 64" role="img" aria-label="Cérebro com raio">
+          <path d="M29 11c-3-5-11-4-13 2-7-1-11 7-7 12-5 5-2 13 4 14-1 7 6 12 12 8l4-3V14z" fill="#bd75ff" stroke="#202f47" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M29 13c5-5 13-2 13 4 7 0 10 8 6 13 4 5 1 12-5 13 0 7-8 11-13 6l-1-1V14z" fill="#8b5bd0" stroke="#202f47" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M28 17v27M18 20l7 5m-13 5 10 1m22-11-8 6m14 7-10 1m-14 5-7 4m15-4 8 5" fill="none" stroke="#f4d8ff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="m49 4-11 18h8l-5 14 16-21h-9l5-11z" fill="#ffcf4a" stroke="#202f47" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span><span class="eyebrow">Apoio e prevenção</span><span class="brand-title">Rumo ao Equilíbrio</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="index.html">Início</a><a href="pesquisa.html" aria-current="page">Pesquisa</a>
+        <a href="calendario.html">Calendário</a><a href="jogos.html">Jogos</a><a href="caps.html">CAPS</a>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Alternar tema">
+        <span class="theme-icon" aria-hidden="true">☾</span><span id="themeLabel">Modo escuro</span>
+      </button>
+      <span id="profileGreeting" class="profile-greeting"></span><button id="signOut" class="sign-out" type="button">Sair</button>
+    </header>
+    <main class="container">
+      <section class="section panel">
+        <div class="section-header">
+          <p class="eyebrow">Autoavaliação</p>
+          <h1>Como você está se sentindo?</h1>
+          <p class="assessment-greeting hidden" id="assessmentGreeting" aria-live="polite"></p>
+          <p class="page-description">A pesquisa é registrada uma única vez por código e armazenada no servidor do projeto. Ela não substitui uma conversa com um profissional de saúde.</p>
+        </div>
+        <form id="assessmentForm" class="assessment-form">
+          <fieldset class="question">
+            <legend>1. Você sente que o uso de cigarro, vape ou outras substâncias está te afetando emocionalmente?</legend>
+            <div class="answer-choice"><label><input type="radio" name="q1" value="1" /> Sim</label><label><input type="radio" name="q1" value="0" /> Não</label></div>
+          </fieldset>
+          <fieldset class="question">
+            <legend>2. Tem dificuldades para controlar o impulso de usar novamente?</legend>
+            <div class="answer-choice"><label><input type="radio" name="q2" value="1" /> Sim</label><label><input type="radio" name="q2" value="0" /> Não</label></div>
+          </fieldset>
+          <fieldset class="question">
+            <legend>3. Você tem se sentido irritado, ansioso ou triste com frequência?</legend>
+            <div class="answer-choice"><label><input type="radio" name="q3" value="1" /> Sim</label><label><input type="radio" name="q3" value="0" /> Não</label></div>
+          </fieldset>
+          <fieldset class="question">
+            <legend>4. Já pensou em pedir ajuda para alguém de confiança?</legend>
+            <div class="answer-choice"><label><input type="radio" name="q4" value="1" /> Sim</label><label><input type="radio" name="q4" value="0" /> Não</label></div>
+          </fieldset>
+          <fieldset class="question">
+            <legend>5. Você consegue manter rotina, sono e alimentação sem usar a substância?</legend>
+            <div class="answer-choice"><label><input type="radio" name="q5" value="1" /> Sim</label><label><input type="radio" name="q5" value="0" /> Não</label></div>
+          </fieldset>
+          <button type="submit" class="primary-btn">Ver sugestões de apoio</button>
+        </form>
+        <div id="assessmentResult" class="assessment-result hidden" aria-live="polite">
+          <h2>Resultado da sua avaliação</h2><p id="assessmentMessage"></p>
+        </div>
+        <div id="assessmentComplete" class="assessment-result hidden" role="status" aria-live="polite">
+          <h2>Pesquisa registrada</h2>
+          <p>Este código já foi usado. Obrigado por responder; não é possível enviar outra pesquisa com o mesmo código.</p>
+        </div>
+        <aside id="surveyCodeCard" class="survey-code-card hidden" aria-live="polite">
+          <strong>Seu código individual</strong>
+          <p>Foi criado automaticamente e fica vinculado a este navegador. Guarde-o como referência e não o compartilhe.</p>
+          <code id="surveyCodeValue"></code>
+          <button id="copySurveyCode" class="secondary-btn" type="button">Copiar código</button>
+        </aside>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

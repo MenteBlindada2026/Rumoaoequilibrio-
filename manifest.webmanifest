@@ -1,0 +1,16 @@
+{
+  "name": "Rumo ao Equilíbrio",
+  "short_name": "Rumo",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#0f172a",
+  "description": "Site de apoio para adolescentes sobre drogas e autocuidado.",
+  "icons": [
+    {
+      "src": "brain-lightning.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
